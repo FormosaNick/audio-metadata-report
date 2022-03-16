@@ -57,11 +57,11 @@ If you don't supply an input folder or output folder at the command line, you'll
 Directly via python:
 
 ```
-py get-audio-metadata.py --input-dir C:\phx\Dev-Main\Phoenix\Audio\SDS_Phoenix\Originals\SFX\Player\PLYR_FOL\PLYR_FOL_FS\PLYR_FOL_BodyFalls\PLYR_BodyFalls_Torso --output-dir D:\output
+py get-audio-metadata.py --input-dir C:\path\to\audio\files --output-dir D:\output
 ```
 
 With helper batch file:
 
 ```
-.\get-audio-metadata.bat  C:\phx\Dev-Main\Phoenix\Audio\SDS_Phoenix\Originals\SFX\Player\PLYR_FOL\PLYR_FOL_FS\PLYR_FOL_BodyFalls\PLYR_BodyFalls_Torso D:\
+.\get-audio-metadata.bat  C:\path\to\audio\files D:\
 ```
