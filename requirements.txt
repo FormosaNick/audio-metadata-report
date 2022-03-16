@@ -1,0 +1,3 @@
+audio_metadata==0.11.1
+easygui==0.98.2
+librosa==0.9.1
