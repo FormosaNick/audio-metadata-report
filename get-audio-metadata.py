@@ -5,6 +5,9 @@ import librosa
 import os
 from csv import DictWriter
 from pprint import pprint
+from numpy import block
+import soundfile as sf
+import pyloudnorm as pyln
 
 __author__ = "Nick Schipano"
 
@@ -29,6 +32,13 @@ def parse_args():
         help="Directory into which to generate CSV report",
     )
     return parser.parse_args()
+
+
+def get_loudness(filepath, duration) -> float:
+    block_size = duration if duration < 0.4 else 0.400
+    data, rate = sf.read(filepath)  # load audio
+    meter = pyln.Meter(rate, block_size=block_size)  # create BS.1770 meter
+    return meter.integrated_loudness(data)
 
 
 if __name__ == "__main__":
@@ -67,6 +77,7 @@ if __name__ == "__main__":
                 )
                 metadata = audio_metadata.load(entry.path)
                 # pprint(metadata)
+                loudness = get_loudness(entry.path, metadata.streaminfo.duration)
                 item = {
                     "file": os.path.basename(entry.path),
                     "format": str(metadata.streaminfo.audio_format),
@@ -77,6 +88,7 @@ if __name__ == "__main__":
                     "bitrate": metadata.streaminfo.bitrate,
                     "sample_rate": metadata.streaminfo.sample_rate,
                     "onsets": (onset_times_str),
+                    "loudness": loudness,
                     "path": entry.path,
                 }
                 items.append(item)
