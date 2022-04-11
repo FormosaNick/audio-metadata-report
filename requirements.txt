@@ -1,3 +1,6 @@
 audio_metadata==0.11.1
 easygui==0.98.2
 librosa==0.9.1
+numpy==1.21.5
+pyloudnorm==0.1.0
+SoundFile==0.10.3.post1
