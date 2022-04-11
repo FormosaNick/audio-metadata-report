@@ -12,6 +12,7 @@
 - duration (in seconds)
 - file path
 - onsets (i.e. offset from beginning of file)
+- loudness
 
 It will generate a file called `audio-metadata-output.csv` in the specified output folder. It should run on Windows, Mac or Linux (or theoretically any platform that can run python 3).
 
