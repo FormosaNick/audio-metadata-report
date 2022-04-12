@@ -35,8 +35,9 @@ def parse_args():
 
 
 def get_loudness(filepath, duration) -> float:
-    block_size = duration if duration < 0.4 else 0.400
-    data, rate = sf.read(filepath)  # load audio
+    # print(f"{filepath}: {duration}")
+    block_size = duration/2.0 if duration < 0.4 else 0.400
+    data, rate = sf.read(filepath)
     meter = pyln.Meter(rate, block_size=block_size)  # create BS.1770 meter
     return meter.integrated_loudness(data)
 
